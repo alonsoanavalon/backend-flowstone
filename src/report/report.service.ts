@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import axios from 'axios';
 import { Model } from 'mongoose';
 import { ReportDTO } from './dto/report.dto';
 import { Report, ReportDocument } from './schemas/report.schema';
@@ -16,7 +17,11 @@ export class ReportService {
         report['date'] = date;
 
         const createdReport = new this.reportModel(report);
-        // if createdReport es true, enviamos a la api de la maca
+        if (createdReport) {
+            report['report_id'] = createdReport._id;
+            //axios.post('http://apimaca.cl', report)
+            //depende de la alerta se lo mando a uno u otro?
+        }
         return createdReport.save();
     }
 
