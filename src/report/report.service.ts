@@ -9,11 +9,14 @@ export class ReportService {
     ReportModel: any;
     constructor(
         @InjectModel(Report.name) private reportModel: Model<ReportDocument>
-    ) { }
+    ) {}
 
     async create(report: ReportDTO): Promise<Report> {
+        const date = `${new Date().toLocaleDateString() + " " +new Date().toLocaleTimeString()}`
+        report['date'] = date;
+
         const createdReport = new this.reportModel(report);
-        // if createdReport es true, enviamos a la api de la naca
+        // if createdReport es true, enviamos a la api de la maca
         return createdReport.save();
     }
 

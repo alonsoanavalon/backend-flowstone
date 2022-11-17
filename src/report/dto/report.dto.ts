@@ -1,6 +1,7 @@
 export class ReportDTO {
-    operador: string;
-    message: string;
-    action: string;
-    picture: string;
+    id: string;
+    tipo: string;
+    description: string;
+    image: string;
+    geolocalization: string;
 }

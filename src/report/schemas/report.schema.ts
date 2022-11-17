@@ -9,18 +9,19 @@ export class Report {
   id: string;
 
   @Prop()
-  operador: string;
+  tipo: string;
 
   @Prop()
-  message: string;
+  description: string;
 
   @Prop()
-  action: string;
+  image: string;
 
   @Prop()
-  picture: string;
+  geolocalization: string;
 
-
+  @Prop()
+  date: string;
 }
 
 export const ReportSchema = SchemaFactory.createForClass(Report);
