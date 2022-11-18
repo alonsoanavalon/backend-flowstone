@@ -19,8 +19,7 @@ export class ReportService {
         const createdReport = new this.reportModel(report);
         if (createdReport) {
             report['report_id'] = createdReport._id;
-            //axios.post('http://apimaca.cl', report)
-            //depende de la alerta se lo mando a uno u otro?
+            axios.post('https://5000-mojonapower-microservic-oullafk9vib.ws-us76.gitpod.io/sms', report)
         }
         return createdReport.save();
     }

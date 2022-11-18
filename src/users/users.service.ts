@@ -13,7 +13,6 @@ export class UsersService {
         if (user !== null) {
             isUser = true;
         } 
-
         return isUser;
     }
 }
