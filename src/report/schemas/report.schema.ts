@@ -15,7 +15,7 @@ export class Report {
   description: string;
 
   @Prop()
-  image: string;
+  image: Buffer;
 
   @Prop()
   geolocalization: string;
