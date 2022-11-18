@@ -23,7 +23,6 @@ export class ReportService {
         report['date'] = date;
   
             report['phone'] = "+56940340950";
-            report['tipo'] = "WARN";
             report['id'] = "18.222.135-5";
             report['description'] = "Se identifica una calidad en el material no esperada";
             report['geolocalization'] = "lat: 112.256, lng: 451.335";
