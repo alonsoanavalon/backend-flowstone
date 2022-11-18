@@ -12,11 +12,13 @@ export class ReportController {
     async createReport(
         @Body() report: ReportDTO
     ){
+        console.log("Report/POST")
         return this.reportService.create(report);
     }
 
     @Get('')
     async getAllReports () {
+        console.log("Report/GET")
         return this.reportService.findAll()
     }
 }
