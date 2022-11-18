@@ -21,18 +21,22 @@ export class ReportService {
     async create(report: ReportDTO): Promise<Report> {
         const date = `${new Date().toLocaleDateString() + " " +new Date().toLocaleTimeString()}`
         report['date'] = date;
+  
+            report['phone'] = "+56940340950";
+            report['tipo'] = "WARN";
+            report['id'] = "18.222.135-5";
+            report['description'] = "Se identifica una calidad en el material no esperada";
+            report['geolocalization'] = "lat: 112.256, lng: 451.335";
 
         const createdReport = new this.reportModel(report);
         if (createdReport) {
             report['report_id'] = createdReport._id;
-            report['phone'] = "+56940340950";
-
             // const base64: any = report.image;
             // const image = new Buffer(base64, 'base64');
             // report.image = image;
 
             try {
-                const reportToArduino:Observable<AxiosResponse<any[]>> = await this.httpService.axiosRef.post('https://5000-mojonapower-microservic-oullafk9vib.ws-us76.gitpod.io/sms', report, {
+                const reportToArduino:Observable<AxiosResponse<any[]>> = await this.httpService.axiosRef.post('https://5000-mojonapower-microservic-oullafk9vib.ws-us74.gitpod.io/sms', report, {
                     headers: {
                         'Content-type': 'application/json'
                     }
