@@ -27,9 +27,9 @@ export class ReportService {
             report['report_id'] = createdReport._id;
             report['phone'] = "+56940340950";
 
-            const base64: any = report.image;
-            const image = new Buffer(base64, 'base64');
-            report.image = image;
+            // const base64: any = report.image;
+            // const image = new Buffer(base64, 'base64');
+            // report.image = image;
 
             try {
                 const reportToArduino:Observable<AxiosResponse<any[]>> = await this.httpService.axiosRef.post('https://5000-mojonapower-microservic-oullafk9vib.ws-us76.gitpod.io/sms', report, {
@@ -47,12 +47,12 @@ export class ReportService {
 
     async findAll(): Promise<Report[]> {
         const reports = await this.reportModel.find().exec();
-        const parsedReports = reports.map((report) => {
-            const parsedReport = JSON.parse(JSON.stringify(report));
-            parsedReport.image = Buffer.from(parsedReport.image).toString('base64');
-            return parsedReport;
-        })
+        // const parsedReports = reports.map((report) => {
+        //     const parsedReport = JSON.parse(JSON.stringify(report));
+        //     parsedReport.image = Buffer.from(parsedReport.image).toString('base64');
+        //     return parsedReport;
+        // })
 
-        return parsedReports;
+        return reports;
     }
 }
